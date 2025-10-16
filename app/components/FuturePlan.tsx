@@ -1,168 +1,81 @@
-"use client";
-import React, { useState, useEffect, useRef } from "react";
-
-interface FuturePlanProps {
-  title?: string;
-  description?: string;
-  items?: string[];
-}
-
-const FuturePlan: React.FC<FuturePlanProps> = ({
-  title = "Future Plans",
-  description = "Our roadmap for upcoming features and improvements",
-  items = [
-    "Enhanced user interface",
-    "Performance optimizations",
-    "New feature implementations",
-    "Mobile responsiveness improvements",
-  ],
-}) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isAnimating, setIsAnimating] = useState(false);
-    const [isLocked, setIsLocked] = useState(false);
-    const timelineRef = useRef<HTMLDivElement>(null);
-    const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  
-    useEffect(() => {
-      const handleWheel = (e: WheelEvent) => {
-        const timeline = timelineRef.current;
-        if (!timeline) return;
-  
-        const rect = timeline.getBoundingClientRect();
-        const scrollingDown = e.deltaY > 0;
-        const scrollingUp = e.deltaY < 0;
-  
-        const fullyVisible =
-          rect.top <= window.innerHeight * 0.25 &&
-          rect.bottom >= window.innerHeight * 0.75;
-  
-        // If fully visible but not locked yet, start the lock timer
-        if (fullyVisible && !isLocked) {
-          if (scrollTimeoutRef.current) {
-            clearTimeout(scrollTimeoutRef.current);
-          }
-          scrollTimeoutRef.current = setTimeout(() => {
-            setIsLocked(true);
-          }, 150); // Wait 150ms of stability before locking
-          return; // Don't capture this scroll yet
-        }
-  
-        // If not fully visible, unlock and reset
-        if (!fullyVisible && isLocked) {
-          setIsLocked(false);
-          if (scrollTimeoutRef.current) {
-            clearTimeout(scrollTimeoutRef.current);
-          }
-          return;
-        }
-  
-        // Only handle scrolling if locked and fully visible
-        if (fullyVisible && isLocked) {
-          // Only prevent scroll if we can actually change step
-          if (
-            (scrollingDown && currentIndex < items.length - 1) ||
-            (scrollingUp && currentIndex > 0)
-          ) {
-            e.preventDefault();
-            if (isAnimating) return;
-  
-            setIsAnimating(true);
-            setCurrentIndex((prev) => (scrollingDown ? prev + 1 : prev - 1));
-          }
-        }
-      };
-  
-      window.addEventListener("wheel", handleWheel, { passive: false });
-      return () => {
-        window.removeEventListener("wheel", handleWheel);
-        if (scrollTimeoutRef.current) {
-          clearTimeout(scrollTimeoutRef.current);
-        }
-      };
-    }, [currentIndex, items.length, isAnimating, isLocked]);
-
-  // Reset animation flag after fade transition
-  useEffect(() => {
-    if (isAnimating) {
-      const timeout = setTimeout(() => setIsAnimating(false), 500);
-      return () => clearTimeout(timeout);
-    }
-  }, [isAnimating]);
-
-  return (
-    <div
-      ref={timelineRef}
-      className="future-plan w-screen h-screen flex flex-col items-center justify-center bg-gray-50 relative overflow-hidden"
-    >
-      {/* Title */}
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4">{title}</h2>
-        <p className="text-lg text-gray-600">{description}</p>
-      </div>
-
-      {/* Timeline steps */}
-      <div className="timeline-step w-full max-w-md relative">
-        {items.map((item, index) => (
-          <div
-            key={index}
-            className={`absolute top-0 left-1/2 transform -translate-x-1/2 w-full transition-opacity duration-500 text-center ${
-              index === currentIndex ? "opacity-100 z-20" : "opacity-0 z-10"
-            }`}
-          >
-            <div className="timeline-dot w-6 h-6 bg-blue-500 rounded-full mb-6 shadow-lg mx-auto"></div>
-            <div className="timeline-content bg-white rounded-lg shadow-lg p-8">
-              <div className="text-sm text-blue-500 font-semibold mb-2">
-                Step {index + 1} of {items.length}
-              </div>
-              <h3 className="text-2xl font-bold mb-2">{item}</h3>
-              <p className="text-gray-600">
-                {index === 0 &&
-                  "Initial setup and foundation building"}
-                {index === 1 &&
-                  "Core functionality development and optimization"}
-                {index === 2 &&
-                  "Advanced features and integrations"}
-                {index === 3 &&
-                  "Polish, testing, and deployment"}
-              </p>
+import React from "react";
+import { Timeline } from "@/components/ui/timeline";
+ 
+export default function FuturePlan() {
+  const data = [
+    {
+      title: "Placeholder 1",
+      content: (
+        <div className="space-y-4">
+          <p className="text-base md:text-lg text-neutral-300 leading-relaxed">
+            Launched the Linux Hero project with initial hardware design and software development. 
+            This marked the beginning of our journey to create an affordable, educational laptop.
+          </p>
+          <div className="flex flex-wrap gap-2 mt-6">
+            <span className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">Hardware Design</span>
+            <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">Software Development</span>
+            <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">Educational Focus</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Placeholder 2",
+      content: (
+        <div className="space-y-4">
+          <p className="text-base md:text-lg text-neutral-300 leading-relaxed">
+            Developed the core educational software platform and user interface design. 
+            Focused on creating an intuitive learning experience for students of all ages and technical backgrounds.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+            <div className="bg-neutral-800/50 rounded-lg p-4">
+              <h4 className="text-white font-semibold mb-2">Platform Development</h4>
+              <p className="text-neutral-400 text-sm">Built scalable educational content management system</p>
+            </div>
+            <div className="bg-neutral-800/50 rounded-lg p-4">
+              <h4 className="text-white font-semibold mb-2">User Experience</h4>
+              <p className="text-neutral-400 text-sm">Designed intuitive interface for all skill levels</p>
             </div>
           </div>
-        ))}
-      </div>
-
-      {/* Progress dots */}
-      <div className="absolute top-1/2 right-8 transform -translate-y-1/2 flex flex-col space-y-2">
-        {items.map((_, index) => (
-          <div
-            key={index}
-            className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-              index === currentIndex ? "bg-blue-500" : "bg-gray-300"
-            }`}
-          />
-        ))}
-      </div>
-
-      {/* Scroll hint */}
-      {currentIndex < items.length - 1 && (
-        <div className="absolute bottom-8 text-gray-500 text-center animate-bounce">
-          <svg
-            className="w-6 h-6 mx-auto"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
-          <p className="text-sm mt-2">Scroll to see the next step</p>
         </div>
-      )}
+      ),
+    },
+    {
+      title: "Placeholder 3",
+      content: (
+        <div className="space-y-6">
+          <p className="text-base md:text-lg text-neutral-300 leading-relaxed">
+            Recent updates and feature releases that enhance the educational experience.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="flex items-center gap-3 p-3 bg-neutral-800/30 rounded-lg">
+              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span className="text-neutral-300 text-sm">Educational content management system</span>
+            </div>
+            <div className="flex items-center gap-3 p-3 bg-neutral-800/30 rounded-lg">
+              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span className="text-neutral-300 text-sm">Offline learning capabilities</span>
+            </div>
+            <div className="flex items-center gap-3 p-3 bg-neutral-800/30 rounded-lg">
+              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span className="text-neutral-300 text-sm">Multi-language support</span>
+            </div>
+            <div className="flex items-center gap-3 p-3 bg-neutral-800/30 rounded-lg">
+              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span className="text-neutral-300 text-sm">Parent/teacher dashboard</span>
+            </div>
+            <div className="flex items-center gap-3 p-3 bg-neutral-800/30 rounded-lg md:col-span-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span className="text-neutral-300 text-sm">Progress tracking and analytics</span>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+  ];
+  return (
+    <div className="relative w-full">
+      <Timeline data={data} />
     </div>
   );
-};
-
-export default FuturePlan;
+}
