@@ -9,8 +9,7 @@ export default function Hero() {
         Linux Hero
       </h1>
       <p className="text-base md:text-lg text-neutral-400 text-center mt-4 relative z-20 max-w-2xl px-4">
-        The ultimate mini laptop for developers and tech enthusiasts.
-        Powered by Linux, built for performance.
+        A small laptop with a big mission — bringing digital education to everyone.
       </p>
       <div className="w-full md:w-[40rem] h-40 relative mt-8">
         {/* Gradients */}
