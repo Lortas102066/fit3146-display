@@ -1,6 +1,6 @@
 import FuturePlan from "./components/FuturePlan";
 import Hero from "./components/Hero";
-import Mission from "./components/mission";
+import Why from "./components/Why";
 import GameTutorial from "./components/GameTutorial";
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
     <main className="min-h-screen bg-black">
       <div className="flex flex-col items-center justify-center w-full">
         <Hero />
-        <Mission />
+        <Why />
         <GameTutorial />
         <div className="w-full max-w-7xl mx-auto px-4 py-16">
           <FuturePlan />
