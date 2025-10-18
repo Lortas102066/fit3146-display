@@ -4,6 +4,8 @@ import Why from "./components/Why";
 import How from "./components/How";
 import GameTutorial from "./components/GameTutorial";
 import InvestmentPlan from "./components/InvestmentPlan";
+import MetricsSection from "./components/MetricsSection";
+import GitHubSection from "./components/GitHubSection";
 
 export default function Home() {
   return (
@@ -13,10 +15,12 @@ export default function Home() {
         <Why />
         <How />
         <GameTutorial />
+        <MetricsSection />
         <div className="w-full max-w-7xl mx-auto px-4 py-16">
           <FuturePlan />
         </div>
         <InvestmentPlan />
+        <GitHubSection />
       </div>
     </main>
   );
