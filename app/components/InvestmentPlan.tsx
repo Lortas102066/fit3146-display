@@ -19,9 +19,9 @@ export default function InvestmentPlan() {
       description: "Develop smaller and more efficient batteries for longer-lasting devices",
     },
     {
-      title: "Offline Learning",
+      title: "Enhanced Learning",
       icon: "📚",
-      description: "Optimize educational software for offline learning, especially for first-time PC users",
+      description: "Optimize educational software for a more intuitive experience and richer content to empower learners worldwide",
     },
   ];
 
