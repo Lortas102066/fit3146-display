@@ -14,9 +14,9 @@ export default function InvestmentPlan() {
       description: "Develop smaller and more powerful chips for better performance and portability",
     },
     {
-      title: "Intuitive Design",
-      icon: "🎨",
-      description: "Enhance software design to be more intuitive and user-friendly",
+      title: "Compact Battery",
+      icon: "🔋",
+      description: "Develop smaller and more efficient batteries for longer-lasting devices",
     },
     {
       title: "Offline Learning",
