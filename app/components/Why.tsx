@@ -46,11 +46,11 @@ export default function Why() {
         >
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
-              Why Linux Hero?
+              Why its necessary?
             </span>
           </h2>
           <p className="text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto">
-            Built with purpose, designed for impact
+            our mission is to bridge the digital divide by providing affordable, durable, and accessible technology to underserved communities worldwide.
           </p>
         </motion.div>
 
