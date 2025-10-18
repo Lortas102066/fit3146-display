@@ -1,6 +1,7 @@
 import FuturePlan from "./components/FuturePlan";
 import Hero from "./components/Hero";
 import Why from "./components/Why";
+import How from "./components/How";
 import GameTutorial from "./components/GameTutorial";
 import InvestmentPlan from "./components/InvestmentPlan";
 
@@ -10,6 +11,7 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center w-full">
         <Hero />
         <Why />
+        <How />
         <GameTutorial />
         <div className="w-full max-w-7xl mx-auto px-4 py-16">
           <FuturePlan />
