@@ -2,6 +2,7 @@ import FuturePlan from "./components/FuturePlan";
 import Hero from "./components/Hero";
 import Why from "./components/Why";
 import GameTutorial from "./components/GameTutorial";
+import InvestmentPlan from "./components/InvestmentPlan";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <div className="w-full max-w-7xl mx-auto px-4 py-16">
           <FuturePlan />
         </div>
+        <InvestmentPlan />
       </div>
     </main>
   );
