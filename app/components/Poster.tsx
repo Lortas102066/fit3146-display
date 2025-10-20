@@ -61,7 +61,6 @@ export default function Poster() {
         {/* Content */}
         <div className="relative z-10 p-6 h-full flex flex-col justify-between">
           
-          {/* Header Section */}
           <div className="text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
