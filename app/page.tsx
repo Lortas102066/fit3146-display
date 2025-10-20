@@ -1,5 +1,6 @@
 import FuturePlan from "./components/FuturePlan";
 import Hero from "./components/Hero";
+import Who from "./components/Who";
 import Why from "./components/Why";
 import How from "./components/How";
 import GameTutorial from "./components/GameTutorial";
@@ -12,6 +13,7 @@ export default function Home() {
     <main className="min-h-screen bg-black">
       <div className="flex flex-col items-center justify-center w-full">
         <Hero />
+        <Who />
         <Why />
         <How />
         <GameTutorial />
