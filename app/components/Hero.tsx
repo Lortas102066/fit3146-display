@@ -14,7 +14,7 @@ export default function Hero() {
       </div>
       
       <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20">
-        Linux Hero
+        Modulearn
       </h1>
       <p className="text-lg md:text-xl text-neutral-300 text-center mt-4 relative z-20 max-w-3xl px-4 leading-relaxed">
         A repairable, modular laptop powered by Orange Pi + Linux. Designed for offline learning in rural and developing communities.

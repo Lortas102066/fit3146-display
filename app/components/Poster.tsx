@@ -72,7 +72,7 @@ export default function Poster() {
               <div className="flex items-center justify-center mb-4">
                 <Laptop className="w-12 h-12 text-indigo-400 mr-3" />
                 <h1 className="text-4xl font-bold text-white">
-                  Linux Hero
+                  Modulearn
                 </h1>
               </div>
                 <p className="text-lg text-neutral-300 font-medium">
