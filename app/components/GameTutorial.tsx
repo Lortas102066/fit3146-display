@@ -11,7 +11,12 @@ export default function GameTutorial() {
     "/demo/demo1.png",
     "/demo/demo2.png", 
     "/demo/demo3.png",
-    "/demo/demo4.png"
+    "/demo/demo4.png",
+    "/demo/demo5.png",
+    "/demo/demo6.png",
+    "/demo/demo7.png",
+    "/demo/demo8.png",
+    "/demo/demo9.png"
   ];
 
   const nextImage = () => {
